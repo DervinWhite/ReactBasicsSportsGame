@@ -46,8 +46,8 @@
           shots: 0,
           score: 0
         }
-        this.shotSound = new Audio('./assets/audio/smb_fireball.wav')
-        this.scoreSound = new Audio('./assets/audio/smb_1-up.wav')
+        this.shotSound = new Audio('./audio\Back+Board.mp3')
+        this.scoreSound = new Audio('./audio\Swish+2.wav')
       }
 
       handleShoot = () => {
@@ -78,12 +78,37 @@
 
 
       render() {
+
+        let shotPercentageDiv
+
+        if (this.state.shots) {
+
+          const shotPercentage = this.state.score / this.state.score
+
+            shotPercentageDiv= (
+              <div>
+                <strong>Shooting %:</strong> {shotPercentage}
+              </div>
+
+            )
+
+        
+        }
         return (
           <div>
             <div><h1>NBA Team  {this.props.name}.  </h1><img src={this.props.logo} width="100px" /> </div>
 
             <div>ShotsTaken: {this.state.shots}</div>
             <div>Score: {this.state.score}</div>
+
+            {shotPercentageDiv}
+
+
+
+
+
+
+
 
             <button onClick={this.handleShoot}> Shoot</button>
 
